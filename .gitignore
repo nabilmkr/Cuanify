@@ -1,0 +1,22 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Mac
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Env
+**/.env
+**/.env.*
+!**/.env.example
+
+# App directories
+Frontend/node_modules/
+Backend/vendor/
+AI-environment/venv/
+AI-environment/__pycache__/

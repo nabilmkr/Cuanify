@@ -1,0 +1,29 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('insights', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->tinyInteger('period_month');
+            $table->smallInteger('period_year');
+            $table->text('insight_text');
+            $table->json('recommendations')->nullable();
+            $table->timestamps();
+
+            // Satu insight per user per bulan-tahun
+            $table->unique(['user_id', 'period_month', 'period_year']);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('insights');
+    }
+};
